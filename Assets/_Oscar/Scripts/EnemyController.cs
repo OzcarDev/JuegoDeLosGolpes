@@ -40,10 +40,9 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
+      
 
-        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+        Vector3 direction = (_player.position - transform.position).normalized;
 
         if (direction.magnitude >= 0.1f)
         {
@@ -58,11 +57,11 @@ public class EnemyController : MonoBehaviour
             this.walk = false;
         }
 
-       // this.targetAnimator.SetBool("Walk", this.walk);
+       this.targetAnimator.SetBool("Walk", this.walk);
 
         fabrikRightArm.startPosition = rightArmPivot.position;
         fabrikLeftArm.startPosition = leftArmPivot.position;
-
+        
         if (!_leftPunching)
         {
             StartCoroutine(LeftPunchCoroutine(leftTarget));
