@@ -25,7 +25,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private Transform _inicialPosRightTarget;
     [SerializeField] private Transform _inicialPosLeftTarget;
     [SerializeField] private float punichingOffset;
-    [SerializeField] private float punchingFrecuency;
+    [SerializeField] private Vector2 punchingFrecuency;
 
     private bool _leftPunching = false;
     private bool _rightPunching = false;
@@ -35,10 +35,13 @@ public class EnemyController : MonoBehaviour
    
     [SerializeField] private float radiusAttack;
 
+    public bool isDead;
+   
     // Start is called before the first frame update
     void Start()
     {
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        isDead = false;
     }
 
     // Update is called once per frame
@@ -62,12 +65,12 @@ public class EnemyController : MonoBehaviour
             this.walk = false;
            
 
-            if (!_leftPunching)
+            if (!_leftPunching&&!isDead)
             {
                 StartCoroutine(LeftPunchCoroutine(leftTarget));
 
             }
-            if (!_rightPunching)
+            if (!_rightPunching&&!isDead)
             {
                 StartCoroutine(RightPunchCoroutine(rightTarget));
             }
@@ -88,7 +91,7 @@ public class EnemyController : MonoBehaviour
 
         nextPosition = _player.position;
 
-        nextPosition *= punichingOffset;
+        float frecuency = Random.Range(punchingFrecuency.x,punchingFrecuency.y);
 
         while (target.position != nextPosition)
         {
@@ -100,9 +103,11 @@ public class EnemyController : MonoBehaviour
             target.position = Vector3.MoveTowards(target.position, _inicialPosRightTarget.position, punchingSpeed * Time.deltaTime);
             yield return null;
         }
-        yield return new WaitForSeconds(punchingFrecuency);
+        yield return new WaitForSeconds(frecuency);
         _rightPunching = false;
     }
+
+
     IEnumerator LeftPunchCoroutine(Transform target)
     {
         _leftPunching = true;
@@ -112,7 +117,7 @@ public class EnemyController : MonoBehaviour
 
         nextPosition = _player.position;
 
-        nextPosition *= punichingOffset;
+        float frecuency = Random.Range(punchingFrecuency.x, punchingFrecuency.y);
 
         while (target.position != nextPosition)
         {
@@ -124,7 +129,7 @@ public class EnemyController : MonoBehaviour
             target.position = Vector3.MoveTowards(target.position, _inicialPosLeftTarget.position, punchingSpeed * Time.deltaTime);
             yield return null;
         }
-        yield return new WaitForSeconds(punchingFrecuency);
+        yield return new WaitForSeconds(frecuency);
         _leftPunching = false;
     }
 }
