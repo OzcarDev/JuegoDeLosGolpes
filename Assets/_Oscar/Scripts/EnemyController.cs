@@ -7,7 +7,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float speed = 5f;
     [SerializeField] private ConfigurableJoint hipJoint;
     [SerializeField] private Rigidbody hip;
-
+    public Transform Position;
     [SerializeField] private Animator targetAnimator;
 
     [SerializeField] private Fabrik fabrikRightArm;
@@ -31,6 +31,10 @@ public class EnemyController : MonoBehaviour
     private bool _rightPunching = false;
 
     private Transform _player;
+
+   
+    [SerializeField] private float radiusAttack;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,11 +44,12 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      
 
-        Vector3 direction = (_player.position - transform.position).normalized;
-
-        if (direction.magnitude >= 0.1f)
+        fabrikRightArm.startPosition = rightArmPivot.position;
+        fabrikLeftArm.startPosition = leftArmPivot.position;
+        Vector3 direction = (_player.position - Position.position).normalized;
+        // Debug.Log(Vector3.Distance(_player.position, Position.position));
+        if (Vector3.Distance(_player.position,Position.position)>radiusAttack)
         {
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
 
@@ -55,22 +60,22 @@ public class EnemyController : MonoBehaviour
             this.walk = true;
         }  else {
             this.walk = false;
+           
+
+            if (!_leftPunching)
+            {
+                StartCoroutine(LeftPunchCoroutine(leftTarget));
+
+            }
+            if (!_rightPunching)
+            {
+                StartCoroutine(RightPunchCoroutine(rightTarget));
+            }
         }
 
        this.targetAnimator.SetBool("Walk", this.walk);
 
-        fabrikRightArm.startPosition = rightArmPivot.position;
-        fabrikLeftArm.startPosition = leftArmPivot.position;
         
-        if (!_leftPunching)
-        {
-            StartCoroutine(LeftPunchCoroutine(leftTarget));
-
-        }
-        if (!_rightPunching)
-        {
-            StartCoroutine(RightPunchCoroutine(rightTarget));
-        }
     }
 
 
