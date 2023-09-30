@@ -20,6 +20,7 @@ public class CollisionDetecter : MonoBehaviour
     {
         ActiveRagdoll();
         enemyController.isDead = true;
+        Destroy(enemyController.gameObject,6);
     }
 
     private void ActiveRagdoll()
