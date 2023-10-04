@@ -19,6 +19,8 @@ public class PunchingSystem : MonoBehaviour
     [SerializeField] private SphereCollider rightCollider;
     private bool _leftPunching=false;
     private bool _rightPunching=false;
+    private Vector3 RightnextPosition;
+    private Vector3 LeftnextPosition;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +31,9 @@ public class PunchingSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        RightnextPosition = rightHitPoint.position;
+        LeftnextPosition = leftHitPoint.position;
+
 
         if (Input.GetMouseButtonDown(0)&&!_leftPunching)
         {
@@ -50,11 +55,11 @@ public class PunchingSystem : MonoBehaviour
 
         rightCollider.enabled = true;
 
-        Vector3 nextPosition = rightHitPoint.position;
+       
 
-        while (target.position!=nextPosition)
+        while (target.position!=RightnextPosition)
         {
-            target.position = Vector3.MoveTowards(target.position, nextPosition,punchingSpeed * Time.deltaTime);
+            target.position = Vector3.MoveTowards(target.position, RightnextPosition,punchingSpeed * Time.deltaTime);
             yield return null;
         }
         while (target.position != _inicialPosRightTarget.position)
@@ -70,12 +75,12 @@ public class PunchingSystem : MonoBehaviour
         _leftPunching = true;
 
         leftCollider.enabled = true;
-        Vector3 nextPosition = leftHitPoint.position;
+      
         
 
-        while (target.position != nextPosition)
+        while (target.position != LeftnextPosition)
         {
-            target.position = Vector3.MoveTowards(target.position, nextPosition, punchingSpeed * Time.deltaTime);
+            target.position = Vector3.MoveTowards(target.position, LeftnextPosition, punchingSpeed * Time.deltaTime);
             yield return null;
         }
         while (target.position != _inicialPosLeftTarget.position)
