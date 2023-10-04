@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/_Oscar/Scenes/Ragdoll.unity
+    guid: d06cd5e03e7e902448caf32c66f21b62
   m_configObjects: {}

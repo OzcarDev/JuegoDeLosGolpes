@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -304,6 +304,149 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8737948894722396031, guid: 4b8fc1316879706468daa843e86283b2, type: 3}
   m_PrefabInstance: {fileID: 173615229}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &196073100
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 196073109}
+  - component: {fileID: 196073108}
+  - component: {fileID: 196073107}
+  - component: {fileID: 196073106}
+  - component: {fileID: 196073105}
+  - component: {fileID: 196073104}
+  - component: {fileID: 196073103}
+  - component: {fileID: 196073102}
+  - component: {fileID: 196073101}
+  m_Layer: 0
+  m_Name: Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &196073101
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196073100}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 19.7582, y: 21.312916, z: 5.7326775}
+  m_Center: {x: 9.3791, y: 10.156458, z: 26.754755}
+--- !u!65 &196073102
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196073100}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 11.181961, y: 19.658094, z: 24.121082}
+  m_Center: {x: -48.079887, y: 11.454051, z: 31.736822}
+--- !u!65 &196073103
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196073100}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.674507, y: 24.62077, z: 54.321274}
+  m_Center: {x: 20.674812, y: 10.221899, z: -2.8693361}
+--- !u!65 &196073104
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196073100}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 81.93882, y: 23.353102, z: 2.9507866}
+  m_Center: {x: -22.769321, y: 11.176551, z: -30.45255}
+--- !u!65 &196073105
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196073100}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7.2850037, y: 20.421896, z: 6.146553}
+  m_Center: {x: -55.812355, y: 9.710948, z: 16.323708}
+--- !u!65 &196073106
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196073100}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.8663635, y: 18.938328, z: 42.02112}
+  m_Center: {x: -62.910606, y: 9.667688, z: -7.90806}
+--- !u!65 &196073107
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196073100}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 42.10882, y: 17.998678, z: 1.2219696}
+  m_Center: {x: -20.908587, y: 8.499341, z: 43.593872}
+--- !u!65 &196073108
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196073100}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.9627924, y: 19.658094, z: 24.121082}
+  m_Center: {x: 2.9904165, y: 11.454051, z: 31.736822}
+--- !u!4 &196073109
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196073100}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &214949249
 GameObject:
   m_ObjectHideFlags: 0
@@ -1158,7 +1301,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &688400778
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2276,10 +2419,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4171608323803510636, guid: 8faf0272faf078448b8058f2878f998e, type: 3}
+      propertyPath: SettingsCanvas
+      value: 
+      objectReference: {fileID: 1844602870}
     - target: {fileID: 4171608323803510637, guid: 8faf0272faf078448b8058f2878f998e, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4171608323803510640, guid: 8faf0272faf078448b8058f2878f998e, type: 3}
+      propertyPath: LifeCounter
+      value: 
+      objectReference: {fileID: 1050420169}
+    - target: {fileID: 4171608323803510640, guid: 8faf0272faf078448b8058f2878f998e, type: 3}
+      propertyPath: gameOverPanel
+      value: 
+      objectReference: {fileID: 688400777}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8faf0272faf078448b8058f2878f998e, type: 3}
 --- !u!1 &1246696111
