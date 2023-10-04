@@ -12,17 +12,28 @@ public class PunchingSystem : MonoBehaviour
     [SerializeField] private Transform _inicialPosLeftTarget;
     [SerializeField] private float punichingOffset;
 
+    [SerializeField] private Transform leftHitPoint;
+    [SerializeField] private Transform rightHitPoint;
+
+    [SerializeField] private SphereCollider leftCollider;
+    [SerializeField] private SphereCollider rightCollider;
     private bool _leftPunching=false;
     private bool _rightPunching=false;
+    private Vector3 RightnextPosition;
+    private Vector3 LeftnextPosition;
     // Start is called before the first frame update
     void Start()
     {
-       
+        leftCollider.enabled = false;
+        rightCollider.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        RightnextPosition = rightHitPoint.position;
+        LeftnextPosition = leftHitPoint.position;
+
 
         if (Input.GetMouseButtonDown(0)&&!_leftPunching)
         {
@@ -41,24 +52,14 @@ public class PunchingSystem : MonoBehaviour
     IEnumerator RightPunchCoroutine(Transform target)
     {
         _rightPunching = true;
-        RaycastHit hit;
-        Vector3 nextPosition = Vector3.zero;
-        var ray = Camera.main.ViewportPointToRay(new Vector3(.5f, .5f));
 
-        if (Physics.Raycast(ray, out hit, 100))
-        {
-            nextPosition = hit.point;
-        }
-        else
-        {
-            nextPosition = _inicialPosRightTarget.position;
-        }
+        rightCollider.enabled = true;
 
-        nextPosition *= punichingOffset;
+       
 
-        while (target.position!=nextPosition)
+        while (target.position!=RightnextPosition)
         {
-            target.position = Vector3.MoveTowards(target.position, nextPosition,punchingSpeed * Time.deltaTime);
+            target.position = Vector3.MoveTowards(target.position, RightnextPosition,punchingSpeed * Time.deltaTime);
             yield return null;
         }
         while (target.position != _inicialPosRightTarget.position)
@@ -66,29 +67,20 @@ public class PunchingSystem : MonoBehaviour
             target.position = Vector3.MoveTowards(target.position, _inicialPosRightTarget.position, punchingSpeed*Time.deltaTime);
             yield return null;
         }
+        rightCollider.enabled = false;
         _rightPunching = false;
     }
     IEnumerator LeftPunchCoroutine(Transform target)
     {
         _leftPunching = true;
-        RaycastHit hit;
-        Vector3 nextPosition = Vector3.zero;
-        var ray = Camera.main.ViewportPointToRay(new Vector3(.5f, .5f));
 
-        if (Physics.Raycast(ray, out hit, 100))
-        {
-            nextPosition = hit.point;
-        }
-        else
-        {
-            nextPosition = _inicialPosLeftTarget.position;
-        }
+        leftCollider.enabled = true;
+      
+        
 
-        nextPosition *= punichingOffset;
-
-        while (target.position != nextPosition)
+        while (target.position != LeftnextPosition)
         {
-            target.position = Vector3.MoveTowards(target.position, nextPosition, punchingSpeed * Time.deltaTime);
+            target.position = Vector3.MoveTowards(target.position, LeftnextPosition, punchingSpeed * Time.deltaTime);
             yield return null;
         }
         while (target.position != _inicialPosLeftTarget.position)
@@ -96,6 +88,7 @@ public class PunchingSystem : MonoBehaviour
             target.position = Vector3.MoveTowards(target.position, _inicialPosLeftTarget.position, punchingSpeed*Time.deltaTime);
             yield return null;
         }
+        leftCollider.enabled = false;
         _leftPunching = false;
     }
 }

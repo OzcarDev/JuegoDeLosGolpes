@@ -7,7 +7,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float speed = 5f;
     [SerializeField] private ConfigurableJoint hipJoint;
     [SerializeField] private Rigidbody hip;
-
+    public Transform Position;
     [SerializeField] private Animator targetAnimator;
 
     [SerializeField] private Fabrik fabrikRightArm;
@@ -25,26 +25,34 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private Transform _inicialPosRightTarget;
     [SerializeField] private Transform _inicialPosLeftTarget;
     [SerializeField] private float punichingOffset;
-    [SerializeField] private float punchingFrecuency;
+    [SerializeField] private Vector2 punchingFrecuency;
 
     private bool _leftPunching = false;
     private bool _rightPunching = false;
 
     private Transform _player;
+
+   
+    [SerializeField] private float radiusAttack;
+
+    public bool isDead;
+   
     // Start is called before the first frame update
     void Start()
     {
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        isDead = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-      
 
-        Vector3 direction = (_player.position - transform.position).normalized;
-
-        if (direction.magnitude >= 0.1f)
+        fabrikRightArm.startPosition = rightArmPivot.position;
+        fabrikLeftArm.startPosition = leftArmPivot.position;
+        Vector3 direction = (_player.position - Position.position).normalized;
+        // Debug.Log(Vector3.Distance(_player.position, Position.position));
+        if (Vector3.Distance(_player.position,Position.position)>radiusAttack)
         {
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
 
@@ -55,22 +63,22 @@ public class EnemyController : MonoBehaviour
             this.walk = true;
         }  else {
             this.walk = false;
+           
+
+            if (!_leftPunching&&!isDead)
+            {
+                StartCoroutine(LeftPunchCoroutine(leftTarget));
+
+            }
+            if (!_rightPunching&&!isDead)
+            {
+                StartCoroutine(RightPunchCoroutine(rightTarget));
+            }
         }
 
        this.targetAnimator.SetBool("Walk", this.walk);
 
-        fabrikRightArm.startPosition = rightArmPivot.position;
-        fabrikLeftArm.startPosition = leftArmPivot.position;
         
-        if (!_leftPunching)
-        {
-            StartCoroutine(LeftPunchCoroutine(leftTarget));
-
-        }
-        if (!_rightPunching)
-        {
-            StartCoroutine(RightPunchCoroutine(rightTarget));
-        }
     }
 
 
@@ -83,7 +91,7 @@ public class EnemyController : MonoBehaviour
 
         nextPosition = _player.position;
 
-        nextPosition *= punichingOffset;
+        float frecuency = Random.Range(punchingFrecuency.x,punchingFrecuency.y);
 
         while (target.position != nextPosition)
         {
@@ -95,9 +103,11 @@ public class EnemyController : MonoBehaviour
             target.position = Vector3.MoveTowards(target.position, _inicialPosRightTarget.position, punchingSpeed * Time.deltaTime);
             yield return null;
         }
-        yield return new WaitForSeconds(punchingFrecuency);
+        yield return new WaitForSeconds(frecuency);
         _rightPunching = false;
     }
+
+
     IEnumerator LeftPunchCoroutine(Transform target)
     {
         _leftPunching = true;
@@ -107,7 +117,7 @@ public class EnemyController : MonoBehaviour
 
         nextPosition = _player.position;
 
-        nextPosition *= punichingOffset;
+        float frecuency = Random.Range(punchingFrecuency.x, punchingFrecuency.y);
 
         while (target.position != nextPosition)
         {
@@ -119,7 +129,7 @@ public class EnemyController : MonoBehaviour
             target.position = Vector3.MoveTowards(target.position, _inicialPosLeftTarget.position, punchingSpeed * Time.deltaTime);
             yield return null;
         }
-        yield return new WaitForSeconds(punchingFrecuency);
+        yield return new WaitForSeconds(frecuency);
         _leftPunching = false;
     }
 }
