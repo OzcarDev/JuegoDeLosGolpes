@@ -2882,6 +2882,8 @@ MonoBehaviour:
   punchingFrecuency: {x: 1, y: 3}
   radiusAttack: 1.8
   isDead: 0
+  _rightCol: {fileID: 2127239902081912741}
+  _leftCol: {fileID: 8328917137444527352}
 --- !u!1 &4937590699221872227
 GameObject:
   m_ObjectHideFlags: 0
@@ -3514,9 +3516,10 @@ GameObject:
   - component: {fileID: 4937590700651794072}
   - component: {fileID: 4937590700651794074}
   - component: {fileID: 4937590700651794073}
+  - component: {fileID: 8328917137444527352}
   m_Layer: 0
   m_Name: SWArmR.003
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3528,7 +3531,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4937590700651794055}
-  m_LocalRotation: {x: -0.000000014901161, y: -0.043619424, z: -0.000000029802322, w: 0.9990483}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.148, y: -0.152, z: 0.104}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3586,6 +3589,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &8328917137444527352
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4937590700651794055}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.15
+  m_Center: {x: -0.004849376, y: 0.00063301076, z: 0.0053783646}
 --- !u!1 &4937590700810994985
 GameObject:
   m_ObjectHideFlags: 0
@@ -5820,9 +5836,10 @@ GameObject:
   - component: {fileID: 4110139681283134998}
   - component: {fileID: 3784259421823280211}
   - component: {fileID: 1664908628289878366}
+  - component: {fileID: 2127239902081912741}
   m_Layer: 0
   m_Name: SWArmR.003
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5834,7 +5851,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9171116085025368710}
-  m_LocalRotation: {x: -0.000000014901161, y: -0.043619424, z: -0.000000029802322, w: 0.9990483}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.148, y: -0.152, z: 0.104}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5892,6 +5909,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &2127239902081912741
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9171116085025368710}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.15
+  m_Center: {x: -0.0048508053, y: 0.0006330136, z: 0.005378364}
 --- !u!1 &9198732519036437814
 GameObject:
   m_ObjectHideFlags: 0

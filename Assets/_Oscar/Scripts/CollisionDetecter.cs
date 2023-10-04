@@ -7,6 +7,12 @@ public class CollisionDetecter : MonoBehaviour
     [SerializeField] private ConfigurableJoint[] joints;
     [SerializeField] private Animator animator;
     [SerializeField] private EnemyController enemyController;
+    private Rigidbody _rb;
+
+    private void Start()
+    {
+        _rb = GetComponent<Rigidbody>();
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.tag == "Fist")
@@ -18,13 +24,18 @@ public class CollisionDetecter : MonoBehaviour
 
     private void Dead()
     {
+       
+        
         ActiveRagdoll();
+        
         enemyController.isDead = true;
+        
         Destroy(enemyController.gameObject,6);
     }
 
     private void ActiveRagdoll()
     {
+
         animator.enabled = false;
         foreach (ConfigurableJoint joint in joints)
         {

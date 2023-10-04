@@ -27,6 +27,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float punichingOffset;
     [SerializeField] private Vector2 punchingFrecuency;
 
+   
     private bool _leftPunching = false;
     private bool _rightPunching = false;
 
@@ -36,7 +37,10 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float radiusAttack;
 
     public bool isDead;
-   
+
+    [SerializeField] private SphereCollider _rightCol;
+    [SerializeField] private SphereCollider _leftCol;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -85,6 +89,7 @@ public class EnemyController : MonoBehaviour
     IEnumerator RightPunchCoroutine(Transform target)
     {
         _rightPunching = true;
+        _rightCol.enabled = true;
         
         Vector3 nextPosition = Vector3.zero;
        
@@ -105,13 +110,14 @@ public class EnemyController : MonoBehaviour
         }
         yield return new WaitForSeconds(frecuency);
         _rightPunching = false;
+        _rightCol.enabled = false;
     }
 
 
     IEnumerator LeftPunchCoroutine(Transform target)
     {
         _leftPunching = true;
-       
+        _leftCol.enabled = true;
         Vector3 nextPosition = Vector3.zero;
       
 
@@ -131,5 +137,6 @@ public class EnemyController : MonoBehaviour
         }
         yield return new WaitForSeconds(frecuency);
         _leftPunching = false;
+        _leftCol.enabled = false;
     }
 }
