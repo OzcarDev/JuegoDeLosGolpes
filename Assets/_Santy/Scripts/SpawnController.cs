@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class SpawnController : MonoBehaviour
@@ -16,6 +17,8 @@ public class SpawnController : MonoBehaviour
     private bool _ableSpawn;
     private int _positionIndex;
 
+    public TextMeshProUGUI enemyCountText;
+
     private void Start()
     {
         EnemySpawner(_enemyCount);
@@ -25,16 +28,17 @@ public class SpawnController : MonoBehaviour
     private void Update()
     {
         _enemyFinder = FindObjectsOfType<EnemyController>().Length;
+        enemyCountText.text = "Enemigos Faltantes: "+ _enemyFinder;
         if (_enemyFinder == 0 && _ableSpawn == true)
         {
-            _enemyCount += 2;
+            _enemyCount += 5;
             EnemySpawner(_enemyCount);
         }
     }
 
     private void EnemySpawner(int actualenemys)
     {
-        for (int i = 0; i <= actualenemys; i++)
+        for (int i = 0; i < actualenemys; i++)
         {
             _positionIndex = Random.Range(0,6);
             Instantiate(enemyPrefab, spawnPositions[_positionIndex].transform.position,spawnPositions[_positionIndex].transform.rotation);

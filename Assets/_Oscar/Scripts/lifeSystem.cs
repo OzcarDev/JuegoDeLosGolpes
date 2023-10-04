@@ -1,19 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
+using TMPro;
 
 public class lifeSystem : MonoBehaviour
 {
     [SerializeField] float totalLife = 100;
     [SerializeField] float life;
+    public TextMeshProUGUI LifeCounter;
+    public GameObject gameOverPanel;
     
     void Start()
     {
         life = totalLife;
     }
 
-    // Update is called once per frame
-   
+    private void Update()
+    {
+        LifeCounter.text = life.ToString();
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -23,7 +28,9 @@ public class lifeSystem : MonoBehaviour
             Debug.Log(life);
             if (life <= 0)
             {
-                Debug.Log("GameOver");
+                life = 0;
+                PlayerController._isPaused = true;
+                gameOverPanel.SetActive(true);
             }
         }
     }
