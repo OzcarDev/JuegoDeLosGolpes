@@ -1,8 +1,9 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class Settings : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class Settings : MonoBehaviour
     [SerializeField] private AudioMixer audioController;
     [SerializeField] private Slider musicSlider;
     [SerializeField] private Slider SFXSlider;
-
+    
     private void Awake()
     {
         if (Instance == null)
@@ -30,6 +31,8 @@ public class Settings : MonoBehaviour
 
     void Start()
     {
+        Instance.PlayMusic("Music1");
+        
         if (PlayerPrefs.HasKey("musicVolume"))
         {
             LoadVolume();

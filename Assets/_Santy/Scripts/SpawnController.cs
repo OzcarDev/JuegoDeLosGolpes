@@ -24,19 +24,19 @@ public class SpawnController : MonoBehaviour
 
     private void Update()
     {
-        _enemyFinder = FindObjectsOfType<AIController>().Length;
+        _enemyFinder = FindObjectsOfType<EnemyController>().Length;
         if (_enemyFinder == 0 && _ableSpawn == true)
         {
-            _enemyCount += 3;
+            _enemyCount += 2;
             EnemySpawner(_enemyCount);
         }
     }
 
     private void EnemySpawner(int actualenemys)
     {
-        for (int i = 0; i < actualenemys; i++)
+        for (int i = 0; i <= actualenemys; i++)
         {
-            _positionIndex = Random.Range(0,3);
+            _positionIndex = Random.Range(0,6);
             Instantiate(enemyPrefab, spawnPositions[_positionIndex].transform.position,spawnPositions[_positionIndex].transform.rotation);
         }
     }

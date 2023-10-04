@@ -31,6 +31,7 @@ public class CollisionDetecter : MonoBehaviour
         enemyController.isDead = true;
         
         Destroy(enemyController.gameObject,6);
+        Settings.Instance.PlaySfx("Death");
     }
 
     private void ActiveRagdoll()

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -15,6 +13,10 @@ public class PlayerController : MonoBehaviour
     private Transform cam;
     private Vector2 inputRot;
     private Vector3 dir;
+
+    public GameObject SettingsCanvas;
+    public static bool _isPaused = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,11 +28,29 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (_isPaused == true)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                _isPaused = false;
+                SettingsCanvas.SetActive(false);
+            }
+            else if ( _isPaused == false)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                _isPaused = true;
+                SettingsCanvas.SetActive(true);
+            }
+        }
+        
+        if (_isPaused) return; 
         Movement();
         RotateMouse();
 
         fabrikRightArm.startPosition = rightArmPivot.position;
         fabrikLeftArm.startPosition = leftArmPivot.position;
+
     }
 
     private void Movement()
@@ -44,10 +64,11 @@ public class PlayerController : MonoBehaviour
 
         characterController.Move((movePlayer * Time.deltaTime * maxSpeed) + gravity);
     }
+
     private void RotateMouse()
     {
-        inputRot.x = Input.GetAxis("Mouse X") * sensibility ;
-        inputRot.y = Input.GetAxis("Mouse Y") * sensibility ;
+        inputRot.x = Input.GetAxis("Mouse X") * sensibility;
+        inputRot.y = Input.GetAxis("Mouse Y") * sensibility;
 
         transform.Rotate(Vector3.up * inputRot.x * sensibility);
 

@@ -31,17 +31,20 @@ public class PunchingSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PlayerController._isPaused) return;
         RightnextPosition = rightHitPoint.position;
         LeftnextPosition = leftHitPoint.position;
 
 
         if (Input.GetMouseButtonDown(0)&&!_leftPunching)
         {
+            Settings.Instance.PlaySfx("Punch1");
             StartCoroutine(LeftPunchCoroutine(leftTarget));
             
         }
         if (Input.GetMouseButtonDown(1)&&!_rightPunching)
         {
+            Settings.Instance.PlaySfx("Punch2");
             StartCoroutine(RightPunchCoroutine(rightTarget));
         }
         
