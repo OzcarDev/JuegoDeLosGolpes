@@ -1966,8 +1966,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c71cb22e6aa46941a3fd0f315aa5418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicSounds: []
-  sfxSounds: []
+  musicSounds:
+  - Clip: {fileID: 8300000, guid: de944581cc572774ba103534518e154f, type: 3}
+    Name: Music1
+  - Clip: {fileID: 8300000, guid: 7844fe3877160884a9ae0d4a66ab3456, type: 3}
+    Name: Music2
+  sfxSounds:
+  - Clip: {fileID: 8300000, guid: 098d085ce681f2e418a946d6b747f213, type: 3}
+    Name: Punch1
+  - Clip: {fileID: 8300000, guid: 5b246af3520f406448e24ccdbd790ab6, type: 3}
+    Name: Punch2
+  - Clip: {fileID: 8300000, guid: d0139f50b6ae0374eaed0c3d6b5c96e1, type: 3}
+    Name: Death
   musicSource: {fileID: 1029636287}
   sfxSource: {fileID: 1553862040}
   audioController: {fileID: 24100000, guid: 91a126691fdce324288cde1a596c07a0, type: 2}
